@@ -33,8 +33,6 @@ Route::post("/makeLogin", function(){
 	return view('users');
 });
 
-Route::get("/users", function(){
-	return view('users');
-});
+Route::get("/users", "UserController@index");
 
 Route::post("/users/createUser","UserController@create");

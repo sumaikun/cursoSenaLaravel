@@ -5,6 +5,11 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	</head>
 	<body>
+		@if(session('status'))
+		    <div class="alert alert-success">
+		        {{ session('status') }}
+		    </div>
+		@endif
 		<table class="table">
 			<thead>
 				<tr>
@@ -19,16 +24,18 @@
 				</tr>
 			</thead>
 			<tbody>
+				@foreach($users as $user)
 				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td>{{ $user->id }}</td>
+					<td>{{ $user->username }}</td>
+					<td>{{ $user->nombres }}  {{ $user->apellidos }}</td>
+					<td>{{ $user->direccion }}</td>
+					<td>{{ $user->telefono }}</td>
+					<td>{{ $user->tipo_documento }}</td>
+					<td>{{ $user->numero_documento }}</td>					
+					<td>{{ $rolesArray[$user->rol] }}</td>
 				</tr>
+				@endforeach
 			</tbody>
 		</table>
 
@@ -70,7 +77,12 @@
 				</div>
 				<div class="form-group">
 					<label>Rol</label>
-					<input name="rol" type="number" required />
+					<select name="rol" required>
+						<option value="" >Selecciona</option>
+						@foreach( $roles as $rol )
+							<option value="{{ $rol->id }}" >{{ $rol->nombre }}</option>
+						@endforeach
+					</select>
 				</div>
 				<div class="form-group">
 					<input type="submit" value="Guardar" class="btn btn-success" >

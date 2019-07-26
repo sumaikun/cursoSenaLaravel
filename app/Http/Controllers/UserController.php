@@ -4,10 +4,31 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\User; 
+use App\User;
+
+use App\Roles;
+
+use App\TiposDocumento; 
 
 class UserController extends Controller
 {
+
+	public function index()
+	{
+		$rolesArray = Roles::pluck("nombre","id");
+
+		$roles = Roles::All();
+
+		$users = User::All();
+
+		//print_r($rolesArray);
+
+		//print_r($roles);		
+		//exit;
+
+		return view("users",compact('roles','users','rolesArray'));
+	}
+
     public function create(Request $request)
     {
     	echo "aqui vamos a crear un usuario";
@@ -24,6 +45,11 @@ class UserController extends Controller
     	$user->username = $request->username;
     	$user->password = $request->password;
     	$user->save();
-    	echo "usuario creado";
+
+    	return redirect('/users')->with('status', "¡usuario creado!");
+    	
     }
+
+
+
 }
