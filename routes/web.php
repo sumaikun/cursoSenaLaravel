@@ -35,4 +35,11 @@ Route::post("/makeLogin", function(){
 
 Route::get("/users", "UserController@index");
 
+Route::get("/users/edit/{id}", "UserController@edit");
+
+Route::post("/users/updateUser", "UserController@update");
+
+Route::get("/users/delete/{id}", "UserController@delete");
+
 Route::post("/users/createUser","UserController@create");
+
