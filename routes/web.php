@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/testTemplate', function () {
+    return view('softwareTemplate');
+});
+
 
 Route::get("/jesus", function(){
 	echo "estoy motrando mi nombre";

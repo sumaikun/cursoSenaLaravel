@@ -1,12 +1,8 @@
-<html>
-	<head>
-		<title>Usuarios</title>
-		<link rel="Stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	</head>
-	<body>
-		
-		@if(session('status'))
+@extends('softwareTemplate')
+
+@section('content')
+    
+	@if(session('status'))
 		    <div class="alert alert-success">
 		        {{ session('status') }}
 		    </div>
@@ -148,7 +144,7 @@
 
 		</div>
 
-	</body>
+	
 	<script>
 		
 		function confirmDelete(id)
@@ -160,5 +156,9 @@
 		}
 
 	</script>
-</html>
 
+
+
+@endsection
+		
+		
